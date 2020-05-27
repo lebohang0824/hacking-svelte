@@ -2,6 +2,7 @@
     import { tasks } from './store.js';
 
     let title;
+    let count = 1;
     let storeTasks;
 
     tasks.subscribe(value => {
@@ -15,7 +16,7 @@
         }
 
         const task = {
-            id: storeTasks.length++,
+            id: count++,
             title: title
         }
 
