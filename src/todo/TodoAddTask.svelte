@@ -10,6 +10,14 @@
     
     const addTaskHandler = e => {
 
+        // Validation
+        if (title == undefined || title.trim().length < 1) {
+            const titleInput = e.target[0];
+            titleInput.style.outlineColor = "red";
+            titleInput.focus();
+            return;
+        }
+
         const task = {
             id: storeTasks.length++,
             title: title
