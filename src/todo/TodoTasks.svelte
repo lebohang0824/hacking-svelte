@@ -1,11 +1,15 @@
 <script>
     import TodoTask from './TodoTask.svelte';
+    import { tasks } from './store.js';
 
-    export let tasks;
+    let storeTasks;
+    const unsubscribe = tasks.subscribe(value => {
+		storeTasks = value;
+    });
 </script>
 
 <div class="tasks">
-    {#each tasks as task}
+    {#each storeTasks as task}
         <TodoTask task={task} />
     {/each}
 </div>

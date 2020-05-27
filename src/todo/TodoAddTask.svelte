@@ -1,10 +1,33 @@
 <script>
+    import { tasks } from './store.js';
 
+    let title;
+    let storeTasks;
+
+    tasks.subscribe(value => {
+		storeTasks = value;
+    });
+    
+    const addTaskHandler = e => {
+
+        const task = {
+            id: storeTasks.length++,
+            title: title
+        }
+
+        tasks.update(value => {
+            value = value.filter(n => n !== null);
+            value.unshift(task);
+            return value;
+        });
+
+        e.target[0].value = null;
+    }
 </script>
 
-<form on:submit|preventDefault>
+<form on:submit|preventDefault={addTaskHandler}>
     <div class="group">
-        <input type="text" class="input" placeholder="What do you need to do?" />
+        <input type="text" bind:value={title} class="input" placeholder="What do you need to do?" />
     </div>
     <div class="group">
         <input type="submit" class="input btn" value="Add Task" />

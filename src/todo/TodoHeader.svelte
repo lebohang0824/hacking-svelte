@@ -3,5 +3,5 @@
 </script>
 
 <div>
-    <TodoAddForm on:submit />
+    <TodoAddForm />
 </div>
