@@ -9,12 +9,8 @@
     });
     
     const addTaskHandler = e => {
-
-        // Validation
-        if (title == undefined || title.trim().length < 1) {
-            const titleInput = e.target[0];
-            titleInput.style.outlineColor = "red";
-            titleInput.focus();
+        if (title == null || title.trim().length < 1) {
+            e.target[0].focus();
             return;
         }
 
@@ -30,15 +26,16 @@
         });
 
         e.target[0].value = null;
+        title = null;
     }
 </script>
 
 <form on:submit|preventDefault={addTaskHandler}>
     <div class="group">
-        <input type="text" bind:value={title} class="input" placeholder="What do you need to do?" />
+        <input type="text" bind:value={title} class="input " class:empty="{title == null || title.trim().length < 1}" placeholder="What do you need to do?" />
     </div>
     <div class="group">
-        <input type="submit" class="input btn" value="Add Task" />
+        <input type="submit" bind: class="input btn" value="Add Task" />
     </div>
 </form>
 
@@ -59,5 +56,8 @@
     }
     .btn {
         cursor: pointer;
+    }
+    .empty {
+        outline-color: red;
     }
 </style>
