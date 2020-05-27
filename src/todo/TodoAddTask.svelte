@@ -32,10 +32,10 @@
 
 <form on:submit|preventDefault={addTaskHandler}>
     <div class="group">
-        <input type="text" bind:value={title} class="input " class:empty="{title == null || title.trim().length < 1}" placeholder="What do you need to do?" />
+        <input type="text" bind:value={title} class="input " class:empty="{!title|| title.trim().length < 1}" placeholder="What do you need to do?" />
     </div>
     <div class="group">
-        <input type="submit" bind: class="input btn" value="Add Task" />
+        <input type="submit" disabled={!title|| title.trim().length < 1} class="input btn" value="Add Task" />
     </div>
 </form>
 
