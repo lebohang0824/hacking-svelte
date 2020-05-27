@@ -9,7 +9,6 @@
     
     const deleteTaskHandler = () => {
         tasks.update(value => {
-            console.log(task.id);
             return value.filter(selected => selected.id !== task.id);
         });
     }
@@ -18,9 +17,9 @@
 
 <div class="task">
     <div class="done">
-        <input class="checkbox" type="checkbox" />
+        <input class="checkbox" bind:checked={task.finished} type="checkbox" />
     </div>
-    <div class="title">{task.title}</div>
+    <div class="title" class:finished={task.finished}>{task.title}</div>
     <div class="delete" on:click={deleteTaskHandler}>x</div>
 </div>
 
@@ -37,6 +36,10 @@
     .done {
         padding: 1px;
         text-align: center;
+    }
+    .finished {
+        color: #999;
+        text-decoration: line-through;
     }
     .title {
         padding: 0 5px;

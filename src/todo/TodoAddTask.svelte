@@ -17,7 +17,8 @@
 
         const task = {
             id: count++,
-            title: title
+            title: title,
+            finished: false
         }
 
         tasks.update(value => {
