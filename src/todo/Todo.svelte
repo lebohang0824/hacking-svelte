@@ -13,4 +13,11 @@
         width: 500px;
         margin: 5% auto;
     }
+    @media screen and (max-width: 510px) {
+        .todo {
+            width: 100%;
+            padding: 5px;
+            box-sizing: border-box;
+        }
+    }
 </style>
